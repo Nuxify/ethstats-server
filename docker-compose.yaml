@@ -16,20 +16,20 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
-    # labels:
-    #   - "traefik.enable=true"
-    #   - "traefik.http.routers.ethstats-server.entrypoints=http"
-    #   - "traefik.http.routers.ethstats-server.rule=Host(`testnet-explorer.nuxify.tech`)"
-    #   - "traefik.http.routers.ethstats-server-secure.entrypoints=https"
-    #   - "traefik.http.routers.ethstats-server-secure.rule=Host(`testnet-explorer.nuxify.tech`)"
-    #   - "traefik.http.routers.ethstats-server-secure.tls=true"
-    #   - "traefik.http.routers.ethstats-server-secure.tls.certresolver=http"
-    #   - "traefik.http.routers.ethstats-server-secure.service=ethstats-server"
-    #   - "traefik.http.services.ethstats-server.loadbalancer.server.port=16000"
-    #   - "traefik.docker.network=proxy"
-    ports:
-      - 17000:17000
+    # comment if not using traefik
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.ethstats-server.entrypoints=http"
+      - "traefik.http.routers.ethstats-server.rule=Host(`testnet-ethstats.nuxify.tech`)"
+      - "traefik.http.routers.ethstats-server-secure.entrypoints=https"
+      - "traefik.http.routers.ethstats-server-secure.rule=Host(`testnet-ethstats.nuxify.tech`)"
+      - "traefik.http.routers.ethstats-server-secure.tls=true"
+      - "traefik.http.routers.ethstats-server-secure.tls.certresolver=http"
+      - "traefik.http.routers.ethstats-server-secure.service=ethstats-server"
+      - "traefik.http.services.ethstats-server.loadbalancer.server.port=17000"
+      - "traefik.docker.network=proxy"
 
+# comment if not using traefik
 networks:
   proxy:
     external: true
